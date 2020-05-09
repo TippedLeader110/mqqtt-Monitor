@@ -1,0 +1,37 @@
+<h1>Ringkasan Monitor</h1>
+
+<mat-card class="card-card">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="card-header-image"></div> -->
+      <mat-card-title>Terakhir Akses Pintu</mat-card-title>
+      <mat-card-subtitle>#5 Data</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/cards/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content class="pad">
+        <table mat-table #table [dataSource]="tablePintu">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Nama</th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stat">
+                <th mat-header-cell *matHeaderCellDef>Status </th>
+                <td mat-cell *matCellDef="let row"> {{row.stat}} </td>
+            </ng-container>
+            <ng-container matColumnDef="time">
+                <th mat-header-cell *matHeaderCellDef>Waktu</th>
+                <td mat-cell *matCellDef="let row"> {{row.time}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+    <mat-card-actions class="pad">
+      <!-- <button mat-stroked-button color="primary">Info Detail</button> -->
+      <!-- <button mat-button>SHARE</button> -->
+    </mat-card-actions>
+</mat-card>
+<!-- 
+<div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+    <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+    <button mat-button (click)="toggle()">TTT</button>
+  </div> -->
