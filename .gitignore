@@ -9,8 +9,7 @@
 
 # dependencies
 /node_modules
-/express-root/mode_modules
-
+/express-root/node_modules
 
 # profiling files
 chrome-profiler-events*.json
