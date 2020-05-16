@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { getInterface } from '../../interface/pintu/getInterface';
+import { GetOver } from '../../interface/listrik/get-over';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,17 @@ export class GetService {
 
   ambil(){
     
+  }
+
+  ambilListrikOverview(): Observable<GetOver[]>{
+    return this.http.get<GetOver[]>(this.url + 'getOverlistrik')
+  }
+
+  ambilListrik(): Observable<GetOver[]>{
+    return this.http.get<GetOver[]>(this.url + 'getListrik')
+  }
+
+  kirimManual(data): Observable<[]>{
+    return this.http.post<[]>(this.url + 'doManual', data)
   }
 }

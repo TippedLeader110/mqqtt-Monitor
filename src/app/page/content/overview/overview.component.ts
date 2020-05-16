@@ -1,6 +1,8 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { GetService } from '../../../service/pintu/get.service';
 import { getInterface } from '../../../interface/pintu/getInterface';
+
+import { GetOver } from '../../../interface/listrik/get-over';
 import {
   trigger,
   state,
@@ -47,9 +49,15 @@ export interface pintu {
 export class OverviewComponent implements OnInit {
   displayedColumns: string[] = ['id', 'stat', 'time'];
   tablePintu:getInterface[] = []
+  satuanHarga = 0.4
+  listrik:GetOver[] = []
+  dataPoints = [];
+  dpsLength = 0;
+  namaKawan = "Nurul"
 
   constructor(private getServ:GetService) {
     this.tablePintucall();
+    this.getListrik();
    }
   isOpen = true;
 
@@ -61,13 +69,26 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.interval = setInterval(() => {
       this.tablePintucall();
+      this.getListrik();
     }, 3000)
+    
   }
 
   tablePintucall(){
     this.getServ.ambilOverview().subscribe(
       result => {
         this.tablePintu = result
+      },
+      error => {
+        console.error(error)
+      }
+    )
+  }
+
+  getListrik(){
+    this.getServ.ambilListrikOverview().subscribe(
+      result => {
+        this.listrik = result
       },
       error => {
         console.error(error)
