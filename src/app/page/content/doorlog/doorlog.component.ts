@@ -45,6 +45,7 @@ export class DoorlogComponent implements OnInit {
   }
 
   doGo(){
+    this.doStop()
     // alert(this.dTopic)
     this.openSnackBar("Subscribe data dari : " + this.dTopic , "dismiss")
     let dataKirim = {
