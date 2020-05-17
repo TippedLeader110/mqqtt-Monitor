@@ -134,7 +134,7 @@ router.get('/getOverpintu', function(req, res){
 router.get('/getListrik', function(req, res){
   var collection = db.collection("listrik");
   var query = {};
-  var sort = [ ["time", -1] ];
+  var sort = [ ["time", 1] ];
   // var limit = 1;
   
   var cursor = collection.find(query).sort(sort).toArray()

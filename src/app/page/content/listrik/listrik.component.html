@@ -1,5 +1,7 @@
 <h1>Monitor Listrik</h1>
 
+<div id="chartContainer" style="height: 370px; width: 100%;margin-bottom: 20px;"></div>
+
 
 <mat-card class="card-card">
     <mat-card-header>
@@ -11,7 +13,6 @@
     <mat-card-content class="pad" *ngFor="let listr of listrik">
         <p>Listrik Bulan ini : {{listr.listrik}} wat</p>
         <p>Estimasi biaya : Rp.{{listr.listrik*satuanHarga}}</p>
-        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     </mat-card-content>
     <mat-card-actions class="pad">
       <!-- <button mat-stroked-button color="primary">Info Detail</button> -->
