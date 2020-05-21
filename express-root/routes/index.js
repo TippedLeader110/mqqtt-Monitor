@@ -8,24 +8,9 @@ var mqtt=require('mqtt');
 dPintu = []
 dListrik = []
 Dmanual = []
-// const mqttDo = function(topic){
-//   var client = mqtt.connect("mqtt://broker.hivemq.com")
-//     client.on("connect",function(){	
-//         console.log("Subscribing to ", topic);
-        
-//         })
-//     client.subscribe(topic,{qos:1});
-//     client.on('message',function(topic, message, packet){
-//       if(dPintu.length >= 5){
-//         dPintu.shift();
-//         dPintu.push(JSON.parse(String(message)))
-//       }
-//       else{
-//         dPintu.push(JSON.parse(String(message)))
-//       }
-//     });
-// }
 
+
+//  Fungsi dasar mqtt untuk melakukan subscribe
 const mqttDo = function(topic){
   var client = mqtt.connect("mqtt://broker.hivemq.com")
     client.on("connect",function(){	
@@ -35,6 +20,7 @@ const mqttDo = function(topic){
     client.subscribe(topic,{qos:1});
     client.on('message',function(topic, message, packet){
       if(dPintu.length >= 5){
+        // data yang diteirma disimpan ke variable dPintu sementara
         dPintu.shift();
         dPintu.push(JSON.parse(String(message)))
       }
@@ -59,11 +45,6 @@ const mqttDoManual = function(topic){
 }
 
 mqttDo("/monHome/pintu")
-// dPintu = doMqtt.mPintu('/monHome/pintu')
-// doMqtt.mPintu('/monHome/pintu')
-// console.log(doMqtt.mPintu('/monHome/pintu'))
-// dPintu.push(JSON.parse(doMqtt.mPintu('/monHome/pintu')));
-
 
 MongoClient.connect("mongodb://localhost:27017/", {
   useUnifiedTopology: true
@@ -117,7 +98,7 @@ router.get('/getOverpintu', function(req, res){
   // let result = doMqtt.mPintu('/monHome/pintu')
   // console.log(dPintu)
   res.json(dPintu)
-  
+  // merender data yang disimpan sementara menjadi bentuk json
   // var collection = db.collection("pintu");
   // var query = {};
   // var sort = [ ["_id", -1] ];

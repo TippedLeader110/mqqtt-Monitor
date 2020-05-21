@@ -44,7 +44,7 @@ export class ListrikComponent implements OnInit {
         result.forEach(item => {
          // console.log(item.listrik)
           let tgl = item.time
-          let harga = item.listrik*this.satuanHarga
+          let harga = Number(item.listrik)*Number(this.satuanHarga)
           let temp = { y:harga, label:String(tgl) }
           this.dataP.push(temp)
         });
