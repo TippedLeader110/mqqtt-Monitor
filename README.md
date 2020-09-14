@@ -1,3 +1,7 @@
+# INFO
+Aplikasi MEAN yang memonitor data yang dikirim melalui protokol MQTT yang di mana data diolah dan dibuat di python dan dikirim melalui MQTT ke MEAN
+
+
 # MQTT - Monitor
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
